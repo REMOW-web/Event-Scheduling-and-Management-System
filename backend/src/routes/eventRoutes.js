@@ -4,6 +4,8 @@ const eventController = require('../controllers/eventController');
 
 router.get('/', eventController.getAllEvents);
 
+router.get('/available-slots', eventController.getAvailableSlots);
+
 router.get('/:id', eventController.getEventById);
 
 router.post('/', eventController.createEvent);
