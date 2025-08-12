@@ -1,49 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const eventController = require('../controllers/eventController');
 
-// GET all events
-router.get('/', async (req, res) => {
-  try {
-    res.json({ message: 'Get all events endpoint' });
-  } catch (error) {
-    res.status(500).json({ message: 'Error fetching events', error: error.message });
-  }
-});
+router.get('/', eventController.getAllEvents);
 
-// GET single event by ID
-router.get('/:id', async (req, res) => {
-  try {
-    res.json({ message: `Get event ${req.params.id}` });
-  } catch (error) {
-    res.status(500).json({ message: 'Error fetching event', error: error.message });
-  }
-});
+router.get('/:id', eventController.getEventById);
 
-// POST create new event
-router.post('/', async (req, res) => {
-  try {
-    res.status(201).json({ message: 'Create new event endpoint' });
-  } catch (error) {
-    res.status(500).json({ message: 'Error creating event', error: error.message });
-  }
-});
+router.post('/', eventController.createEvent);
 
-// PUT update event
-router.put('/:id', async (req, res) => {
-  try {
-    res.json({ message: `Update event ${req.params.id}` });
-  } catch (error) {
-    res.status(500).json({ message: 'Error updating event', error: error.message });
-  }
-});
+router.put('/:id', eventController.updateEvent);
 
-// DELETE event
-router.delete('/:id', async (req, res) => {
-  try {
-    res.json({ message: `Delete event ${req.params.id}` });
-  } catch (error) {
-    res.status(500).json({ message: 'Error deleting event', error: error.message });
-  }
-});
+router.delete('/:id', eventController.deleteEvent);
 
 module.exports = router;

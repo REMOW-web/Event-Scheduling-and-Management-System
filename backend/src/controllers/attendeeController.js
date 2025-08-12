@@ -1,5 +1,5 @@
 
-const prisma = require('../prisma');
+const prisma = require('../config/prisma');
 
 exports.addAttendee = async (req, res) => {
   try {
