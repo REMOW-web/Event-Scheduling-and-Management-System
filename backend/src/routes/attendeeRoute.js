@@ -1,9 +1,9 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router({ mergeParams: true }); 
 const attendeeController = require('../controllers/attendeeController');
 
-router.post('/events/:eventId/attendees', attendeeController.addAttendee);
-router.delete('/attendees/:attendeeId', attendeeController.removeAttendee);
-router.get('/events/:eventId/attendees', attendeeController.getAttendeesForEvent);
+router.post('/', attendeeController.addAttendeeToEvent);
+router.get('/', attendeeController.getAllAttendees);
+router.delete('/:attendeeId', attendeeController.removeAttendeeFromEvent);
 
 module.exports = router;
